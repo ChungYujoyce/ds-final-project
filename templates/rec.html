@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>Data Science 2020 final project</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static',filename='vendor/simple-line-icons/simple-line-icons.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css" />
+
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="{{ url_for('static',filename='css/animate.css') }}" rel="stylesheet">
+
+    <!-- THEME STYLES -->
+    <link href="{{ url_for('static',filename='css/layout.min.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/myadd.css') }}">
+    <!-- Favicon -->
+    <link href="{{ url_for('static',filename='img/icon.png') }}" rel="icon">
+</head>
+<!-- END HEAD -->
+
+<!-- BODY -->
+
+<body id="loader">
+    <!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="navbar-nav navbar-nav-right">
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="/">Home</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/about">About</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/features">Features</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/classification">
+                                    Classification</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news_recommend">News
+                                    Rec</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--========== END HEADER ==========-->
+
+    <!--========== PARALLAX ==========-->
+    <div class="parallax-window" data-parallax="scroll"
+        data-image-src="{{ url_for('static',filename='img/1920x1080/03.jpg') }}">
+        <div class="parallax-content container">
+            <h1 class="carousel-title">News Recommendation</h1>
+            <p>www</p>
+        </div>
+    </div>
+    <!--========== PARALLAX ==========-->
+
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- Service -->
+    <div class="bg-color-sky-light" data-auto-height="true">
+        <div class="content-lg container">
+            <div class="row row-space-1 margin-b-2">
+                <div class="col-sm-6 sm-margin-b-2">
+                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".2s">
+                        <div class="service" data-height="height">
+                            <h3>Art Of Coding</h3>
+                            <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor
+                            </p>
+                            <a href="#" class="content-wrapper-link"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".1s">
+                        <div class="service" data-height="height">
+                            <h3>Responsive Design</h3>
+                            <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor
+                            </p>
+                            <a href="#" class="content-wrapper-link"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--// end row -->
+
+
+            <div class="row row-space-1">
+                <div class="col-sm-6 sm-margin-b-2">
+                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".4s">
+                        <div class="service" data-height="height">
+                            <h3>Fast Delivery</h3>
+                            <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor
+                            </p>
+                            <a href="#" class="content-wrapper-link"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
+                        <div class="service" data-height="height">
+                            <h3>Free Plugins</h3>
+                            <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor
+                            </p>
+                            <a href="#" class="content-wrapper-link"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+    </div>
+    <div class="spinner-box" id="load">
+        <div class="leo-border-1">
+            <div class="leo-core-1"></div>
+        </div>
+        <div class="leo-border-2">
+            <div class="leo-core-2"></div>
+        </div>
+    </div>
+    <div class="contain">
+        <form class="search-form" id="search-form" method='post' action="/loading">
+            <input type="text" class="searchbox" name='query' />
+        </form>
+    </div>
+    <!-- End Service -->
+    <!-- General Questions -->
+    <div class="content-lg container">
+        <div class="margin-b-30">
+            <h2>Performance</h2>
+            <canvas id="barChart"></canvas>
+        </div>
+        <!--// end row -->
+
+        <!-- Back To Top -->
+        <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+
+        <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+        <!-- CORE PLUGINS -->
+        <script src="{{ url_for('static',filename='vendor/jquery.min.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='vendor/jquery-migrate.min.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js') }}"
+            type="text/javascript"></script>
+
+        <!-- PAGE LEVEL PLUGINS -->
+        <script src="{{ url_for('static',filename='vendor/jquery.easing.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='vendor/jquery.back-to-top.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='vendor/jquery.smooth-scroll.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='vendor/jquery.wow.min.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='vendor/jquery.parallax.min.js') }}" type="text/javascript"></script>
+
+        <!-- PAGE LEVEL SCRIPTS -->
+        <script src="{{ url_for('static',filename='js/layout.min.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='js/components/wow.min.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='js/components/tooplate.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='js/Chart.min.js') }}" type="text/javascript"></script>
+        <script type="text/javascript">
+            var score = JSON.parse('{{ score | tojson | safe}}');
+            var title = JSON.parse('{{ title | tojson | safe}}');
+
+            let ctxLine,
+                ctxBar,
+                ctxPie,
+                optionsLine,
+                optionsBar,
+                optionsPie,
+                configLine,
+                configBar,
+                configPie,
+                barChart;
+            // DOM is ready
+            $(function () {
+                //updateChartOptions();
+                //drawLineChart(); // Line Chart
+                drawBarChart(score, title); // Bar Chart
+                //drawPieChart(); // Pie Chart
+                //drawCalendar(); // Calendar
+
+                $(window).resize(function () {
+                    //updateChartOptions();
+                    //updateLineChart();
+                    updateBarChart();
+                    reloadPage();
+                });
+            })
+        </script>
+</body>
+<!-- END BODY -->
+
+</html>
