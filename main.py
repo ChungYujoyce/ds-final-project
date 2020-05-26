@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for
 #from datetime import timedelta
 #from word_cloud import process_cloud, cloud
 #import requests
-
+from news_recommend import news_recommendation
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -14,18 +14,39 @@ def index():
 @app.route('/about')
 def about():
  	return render_template('about.html')
-
-@app.route('/work')
+@app.route('/classification')
 def work():
- 	return render_template('work.html')
+    return render_template('classification.html')
+query = ""
+@app.route('/loading', methods=['GET','POST'])
+def load():
+    if request.method == 'POST':
+        global query
+        query = request.form.get('query')
+        return render_template('loader.html')
 
-@app.route('/faq')
-def faq():
- 	return render_template('faq.html')
+@app.route('/news_process')
+def process():
+    global query
+    print(query)
+    data = news_recommendation(query)
+    title = []
+    score = []
+    for key, val in data.items():
+        title.append(key)
+        score.append(val)
+    return render_template('rec.html', score=score, title=title)
+    
+@app.route('/news_recommend', methods=['GET','POST'])
+def recommend():
+    title = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange", "Blue", "Yellow", "Green", "Purple"]
+    score = [12, 19, 3, 5, 2, 3, 6, 8, 4, 9]
+    return render_template('rec.html', score=score, title=title)
 
-@app.route('/products')
+@app.route('/features')
 def products():
- 	return render_template('products.html')
+ 	return render_template('features.html')
+
 '''
 @app.route('/sentiment', methods=['GET','POST'])
 def sentiment():
