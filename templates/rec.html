@@ -16,13 +16,15 @@
         type="text/css" />
     <link href="{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"
         type="text/css" />
-
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300&display=swap" rel="stylesheet">
     <!-- PAGE LEVEL PLUGIN STYLES -->
     <link href="{{ url_for('static',filename='css/animate.css') }}" rel="stylesheet">
 
     <!-- THEME STYLES -->
     <link href="{{ url_for('static',filename='css/layout.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ url_for('static',filename='css/myadd.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/textarea.css') }}">
     <!-- Favicon -->
     <link href="{{ url_for('static',filename='img/icon.png') }}" rel="icon">
 </head>
@@ -131,6 +133,23 @@
             <!--// end row -->
         </div>
     </div>
+    <div class="content-lg container">
+
+        <form method='post' action="/word_cloud">
+            <div class="box">
+                <h2>Input a news</h2>
+                <textarea name="news" id="comment" placeholder="Type something..." action="/word_cloud"></textarea>
+            </div>
+            <div class="button_cont">
+                <button class="btn btn-outline-success" type='submit'>create</button></div>
+        </form>
+        <div style="text-align: center">
+            <h2>World Cloud</h2>
+            <img height="700" width="780" src="{{ url_for('static', filename= fig_name ) }}" />
+            <!-- <image id="test_image" src="./test-image.png" style="width: 580px" /> -->
+        </div>
+    </div>
+
     <div class="spinner-box" id="load">
         <div class="leo-border-1">
             <div class="leo-core-1"></div>
@@ -148,63 +167,63 @@
     <!-- General Questions -->
     <div class="content-lg container">
         <div class="margin-b-30">
-            <h2>Performance</h2>
+            <h2>News for You</h2>
             <canvas id="barChart"></canvas>
         </div>
         <!--// end row -->
+    </div>
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
 
-        <!-- Back To Top -->
-        <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script src="{{ url_for('static',filename='vendor/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='vendor/jquery-migrate.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js') }}"
+        type="text/javascript"></script>
 
-        <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-        <!-- CORE PLUGINS -->
-        <script src="{{ url_for('static',filename='vendor/jquery.min.js') }}" type="text/javascript"></script>
-        <script src="{{ url_for('static',filename='vendor/jquery-migrate.min.js') }}" type="text/javascript"></script>
-        <script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js') }}"
-            type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS -->
+    <script src="{{ url_for('static',filename='vendor/jquery.easing.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='vendor/jquery.back-to-top.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='vendor/jquery.smooth-scroll.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='vendor/jquery.wow.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='vendor/jquery.parallax.min.js') }}" type="text/javascript"></script>
 
-        <!-- PAGE LEVEL PLUGINS -->
-        <script src="{{ url_for('static',filename='vendor/jquery.easing.js') }}" type="text/javascript"></script>
-        <script src="{{ url_for('static',filename='vendor/jquery.back-to-top.js') }}" type="text/javascript"></script>
-        <script src="{{ url_for('static',filename='vendor/jquery.smooth-scroll.js') }}" type="text/javascript"></script>
-        <script src="{{ url_for('static',filename='vendor/jquery.wow.min.js') }}" type="text/javascript"></script>
-        <script src="{{ url_for('static',filename='vendor/jquery.parallax.min.js') }}" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="{{ url_for('static',filename='js/layout.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='js/components/wow.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='js/components/tooplate.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='js/Chart.min.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        var score = JSON.parse('{{ score | tojson | safe}}');
+        var title = JSON.parse('{{ title | tojson | safe}}');
 
-        <!-- PAGE LEVEL SCRIPTS -->
-        <script src="{{ url_for('static',filename='js/layout.min.js') }}" type="text/javascript"></script>
-        <script src="{{ url_for('static',filename='js/components/wow.min.js') }}" type="text/javascript"></script>
-        <script src="{{ url_for('static',filename='js/components/tooplate.js') }}" type="text/javascript"></script>
-        <script src="{{ url_for('static',filename='js/Chart.min.js') }}" type="text/javascript"></script>
-        <script type="text/javascript">
-            var score = JSON.parse('{{ score | tojson | safe}}');
-            var title = JSON.parse('{{ title | tojson | safe}}');
+        let ctxLine,
+            ctxBar,
+            ctxPie,
+            optionsLine,
+            optionsBar,
+            optionsPie,
+            configLine,
+            configBar,
+            configPie,
+            barChart;
+        // DOM is ready
+        $(function () {
+            //updateChartOptions();
+            //drawLineChart(); // Line Chart
+            drawBarChart(score, title); // Bar Chart
+            //drawPieChart(); // Pie Chart
+            //drawCalendar(); // Calendar
 
-            let ctxLine,
-                ctxBar,
-                ctxPie,
-                optionsLine,
-                optionsBar,
-                optionsPie,
-                configLine,
-                configBar,
-                configPie,
-                barChart;
-            // DOM is ready
-            $(function () {
+            $(window).resize(function () {
                 //updateChartOptions();
-                //drawLineChart(); // Line Chart
-                drawBarChart(score, title); // Bar Chart
-                //drawPieChart(); // Pie Chart
-                //drawCalendar(); // Calendar
-
-                $(window).resize(function () {
-                    //updateChartOptions();
-                    //updateLineChart();
-                    updateBarChart();
-                    reloadPage();
-                });
-            })
-        </script>
+                //updateLineChart();
+                updateBarChart();
+                reloadPage();
+            });
+        })
+    </script>
 </body>
 <!-- END BODY -->
 
