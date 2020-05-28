@@ -3,8 +3,9 @@ from flask import Flask, render_template, request, redirect, url_for
 #from sentiment import get_all_words, get_tweets_for_model, remove_noise,process
 #from datetime import timedelta
 from news_word_cloud import process_cloud
+from news_rec_by_keywords import news_recommend_keywords
 #import requests
-from news_recommend import news_recommendation
+from news_rec_by_title import news_recommendation
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -34,10 +35,14 @@ def load():
 def process():
     global query, title, score
     print(query)
-    data = news_recommendation(query)
-    for key, val in data.items():
-        title.append(key)
-        score.append(val)
+
+    if type(int(query)) == int:
+        res = news_recommendation(query)
+    else:
+        res = news_recommend_keywords(query)
+    for rec in recs:
+        title.append(rec[1])
+        score.append(rec[0])
     return render_template('rec.html', fig_name = str(fig_name), score=score, title=title)
     
 @app.route('/news_recommend', methods=['GET','POST'])
@@ -85,6 +90,12 @@ def sentiment():
     return render_template('sentiment.html')
 
 '''
+
+@app.route('/news_info')
+def info():
+    return render_template('news_info.html')
+
+
 if __name__ == '__main__':
     app.debug = True
     app.run()

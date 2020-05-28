@@ -19,7 +19,10 @@ regex==2020.5.14
 requests==2.23.0
 scipy==1.4.1
 six==1.15.0
+sklearn==0.0
+threadpoolctl==2.0.0
 tqdm==4.46.0
 urllib3==1.25.9
 Werkzeug==1.0.1
 wincertstore==0.2
+wordcloud==1.7.0
