@@ -22,7 +22,7 @@ def process_cloud(text, count):
         'Wide-Latin.ttf',
     ] # genre[i] goes with fonts[i]
 
-    font_path = "./static/assets/" + fonts[count]
+    font_path = os.getcwd() + "/static/assets/" + fonts[count]
     #background_image_path = os.getcwd() + "/assets/" + genres[j] + ".JPG"
     #background = "assets/" + genres[j] + ".JPG"
 
@@ -38,11 +38,11 @@ def process_cloud(text, count):
     words = text.split()
     #print(words.count('china') , words.count('trump'))
     if words.count('china') > words.count('trump'):
-        mask =  "./static/assets/mask.JPG"
+        mask = os.getcwd() + "/static/assets/mask.jpg"
     elif words.count('china') < words.count('trump'):
-        mask = "./static/assets/trump.PNG"
+        mask = os.getcwd() + "/static/assets/trump.png"
     else:
-        mask = "./static/assets/virus.JPG"
+        mask = os.getcwd() + "/static/assets/virus.jpg"
     maskArray = np.array(Image.open(mask))
         
     word = WordCloud(stopwords = Stopwords, width = 2000, height = 1500,\

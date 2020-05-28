@@ -40,7 +40,7 @@ def process():
         res = news_recommendation(query)
     else:
         res = news_recommend_keywords(query)
-    for rec in recs:
+    for rec in res:
         title.append(rec[1])
         score.append(rec[0])
     return render_template('rec.html', fig_name = str(fig_name), score=score, title=title)
