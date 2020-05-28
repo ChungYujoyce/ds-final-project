@@ -22,7 +22,7 @@ def process_cloud(text, count):
         'Wide-Latin.ttf',
     ] # genre[i] goes with fonts[i]
 
-    font_path = os.getcwd() + "/static/assets/" + fonts[count]
+    font_path = "./static/assets/" + fonts[count]
     #background_image_path = os.getcwd() + "/assets/" + genres[j] + ".JPG"
     #background = "assets/" + genres[j] + ".JPG"
 
@@ -38,11 +38,11 @@ def process_cloud(text, count):
     words = text.split()
     #print(words.count('china') , words.count('trump'))
     if words.count('china') > words.count('trump'):
-        mask = os.getcwd() + "/static/assets/mask.JPG"
+        mask =  "./static/assets/mask.JPG"
     elif words.count('china') < words.count('trump'):
-        mask = os.getcwd() + "/static/assets/trump.PNG"
+        mask = "./static/assets/trump.PNG"
     else:
-        mask = os.getcwd() + "/static/assets/virus.JPG"
+        mask = "./static/assets/virus.JPG"
     maskArray = np.array(Image.open(mask))
         
     word = WordCloud(stopwords = Stopwords, width = 2000, height = 1500,\
@@ -51,7 +51,7 @@ def process_cloud(text, count):
                      mode = 'RGBA', colormap = plt.get_cmap('nipy_spectral') # nipy_spectral, tab10
            ).generate(text)
     fig_name = "cloud_result/wordCloud_"+str(count)+".png"
-    word.to_file("static/cloud_result/wordCloud_"+str(count)+".png")
+    word.to_file("./static/cloud_result/wordCloud_"+str(count)+".png")
     count += 1
     if(count == 8):
         count = 0
