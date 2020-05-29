@@ -144,6 +144,7 @@
             <div class="button_cont">
                 <button class="btn btn-outline-success" type='submit'>create</button></div>
         </form>
+        <br>
         <div style="text-align: center">
             <h2>World Cloud</h2>
             <img height="700" width="780" src="{{ url_for('static', filename= fig_name ) }}" />
@@ -159,23 +160,86 @@
             <div class="leo-core-2"></div>
         </div>
     </div>
-    <div class="contain">
-        <h4>Input a number: representing the index of the existing news in our dataset. </h4>
-        <h4>Input some key words: representing the keywords for searching the related news. </h4>
-        <a class="link" href="/news_info" target="_blank">Here's the news we have</a>
-    </div>
-    <div class="contain">
+    <div class="bg-color-sky-light" data-auto-height="true">
+        <div class="content-lg container">
+            <div class="row row-space-1 margin-b-2">
+                <div class="col-sm-6">
+                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".1s">
+                        <div class="service" data-height="height">
+                            <div>
+                                <h4>Input a number: representing the index of the existing news in our dataset. </h4>
+                                <h4>Input some key words: representing the keywords for searching the related news.
+                                </h4>
+                                <a class="link" href="/news_info" target="_blank">Here's the news we have</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 sm-margin-b-2">
+                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".2s">
+                        <div class="service" data-height="height">
+                            <form method='post' action="/loading">
 
-        <form class="search-form" id="search-form" method='post' action="/loading">
-            <input type="text" class="searchbox" name='query' />
-        </form>
+                                <div class="dropdown" style="margin-top: 20px; margin-left: 5px;">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Model
+                                            Select</label>
+                                    </div>
+                                    <select class="custom-select" name="selectmodel">
+                                        {% for o in data %}
+                                        <option value="{{ o.name }}">{{ o.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="contain">
+                                    <input type="text" class="searchbox" name='query' />
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
     </div>
-    <!-- End Service -->
-    <!-- General Questions -->
+
     <div class="content-lg container">
-        <div class="margin-b-30">
-            <h2>News for You</h2>
-            <canvas id="barChart"></canvas>
+        <div class="row margin-b-30">
+            <div class="col-sm-6">
+                <h2>News for You</h2>
+                <h5>cosine-sim by news title</h5>
+                <h5>-- sklearn cosine_similarity and CountVectorizer</h5>
+                <canvas id="barChart"></canvas>
+            </div>
+        </div>
+        <div class="col-sm-4">
+        </div>
+        <!--// end row -->
+    </div>
+
+    <div class="content-lg container">
+        <div class="col-sm-7 sm-margin-b-50">
+            <div class="margin-b-30">
+                <h2>News for You</h2>
+                <h5>tf-idf by news title</h5>
+                <h5>-- sklearn TfidfVectorizer, linear_kernel</h5>
+                <canvas id="barChart2"></canvas>
+            </div>
+            <div class="col-sm-4 col-sm-offset-1">
+            </div>
+        </div>
+        <!--// end row -->
+    </div>
+
+    <div class="content-lg container">
+        <div class="col-sm-7 sm-margin-b-50">
+            <div class="margin-b-30">
+                <h2>News for You</h2>
+                <h5>tf-idf by user keywords</h5>
+                <h5>-- gensim TfidfModel, MatrixSimilarity</h5>
+                <canvas id="barChart3"></canvas>
+            </div>
+            <div class="col-sm-4 col-sm-offset-1">
+            </div>
         </div>
         <!--// end row -->
     </div>
@@ -204,22 +268,34 @@
     <script type="text/javascript">
         var score = JSON.parse('{{ score | tojson | safe}}');
         var title = JSON.parse('{{ title | tojson | safe}}');
+        var score2 = JSON.parse('{{ score2 | tojson | safe}}');
+        var title2 = JSON.parse('{{ title2 | tojson | safe}}');
+        var score3 = JSON.parse('{{ score3 | tojson | safe}}');
+        var title3 = JSON.parse('{{ title3 | tojson | safe}}');
 
         let ctxLine,
             ctxBar,
+            ctxBar2,
+            ctxBar3,
             ctxPie,
             optionsLine,
             optionsBar,
             optionsPie,
             configLine,
             configBar,
+            configBar2,
+            configBar3,
             configPie,
-            barChart;
+            barChart,
+            barChart2,
+            barChart3;
         // DOM is ready
         $(function () {
             //updateChartOptions();
             //drawLineChart(); // Line Chart
-            drawBarChart(score, title); // Bar Chart
+            drawBarChart(score, title, score2, title2, score3, title3); // Bar Chart
+            //drawBarChart(score2, title2);
+            //drawBarChart(score3, title3);
             //drawPieChart(); // Pie Chart
             //drawCalendar(); // Calendar
 
