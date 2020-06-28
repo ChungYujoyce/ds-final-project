@@ -27,6 +27,39 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/textarea.css') }}">
     <!-- Favicon -->
     <link href="{{ url_for('static',filename='img/icon.png') }}" rel="icon">
+    <style>
+        @import url(https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css);
+    
+        /*字體*/
+        html,
+        body,
+        div,
+        dl,
+        dt,
+        dd,
+        ul,
+        ol,
+        li,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        pre,
+        form,
+        label,
+        fieldset,
+        input,
+        p,
+        span,
+        a,
+        blockquote,
+        th,
+        td {
+            font-family: 'cwTeXFangSong', serif !important;
+        }
+    </style>
 </head>
 <!-- END HEAD -->
 
@@ -50,15 +83,20 @@
                 <div class="collapse navbar-collapse nav-collapse">
                     <div class="menu-container">
                         <ul class="navbar-nav navbar-nav-right">
-                            <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="/">Home</a></li>
-                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/about">About</a>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">About</a></li>
+                            <!--li class="nav-item"><a class="nav-item-child nav-item-hover" href="/about">About</a-->
                             </li>
-                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/features">Features</a>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/twitter">Twitter data
+                                    analysis</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/political">Political
+                                    analysis</a>
                             </li>
                             <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/classification">
                                     Classification</a></li>
-                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news_recommend">News
-                                    Rec</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover active"
+                                    href="/news_recommend">News
+                                    Recommendation</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,7 +112,7 @@
         data-image-src="{{ url_for('static',filename='img/1920x1080/03.jpg') }}">
         <div class="parallax-content container">
             <h1 class="carousel-title">News Recommendation</h1>
-            <p>www</p>
+            <h4 style="color: aquamarine;">我們使用三種不同方法設計推薦系統，依照使用者需求進行推薦</h4>
         </div>
     </div>
     <!--========== PARALLAX ==========-->
@@ -87,46 +125,22 @@
                 <div class="col-sm-6 sm-margin-b-2">
                     <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".2s">
                         <div class="service" data-height="height">
-                            <h3>Art Of Coding</h3>
-                            <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor
+                            <h3>Words Cloud</h3>
+                            <p class="margin-b-5">
+                                使用者輸入一段文字，我們會隨機配對字體，以及算出"China"跟"Trump"這兩個字的數量，
+                                如果"Trump"數量較多就會以他的剪影呈現文字雲。
                             </p>
-                            <a href="#" class="content-wrapper-link"></a>
-
+                            
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".1s">
                         <div class="service" data-height="height">
-                            <h3>Responsive Design</h3>
-                            <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor
+                            <h3>Recommendation System</h3>
+                            <p class="margin-b-5">有三種方法
                             </p>
-                            <a href="#" class="content-wrapper-link"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--// end row -->
-
-
-            <div class="row row-space-1">
-                <div class="col-sm-6 sm-margin-b-2">
-                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".4s">
-                        <div class="service" data-height="height">
-                            <h3>Fast Delivery</h3>
-                            <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor
-                            </p>
-                            <a href="#" class="content-wrapper-link"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
-                        <div class="service" data-height="height">
-                            <h3>Free Plugins</h3>
-                            <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor
-                            </p>
-                            <a href="#" class="content-wrapper-link"></a>
+                            <a href="#" class="content-wrapper-link">Model 1 & Model 2只適用在local (因計算量過於龐大)</a>
                         </div>
                     </div>
                 </div>
@@ -170,7 +184,8 @@
                                 <h4>Input a number: representing the index of the existing news in our dataset. </h4>
                                 <h4>Input some key words: representing the keywords for searching the related news.
                                 </h4>
-                                <a class="link" href="/news_info" target="_blank">Here's the news we have</a>
+                                Here's the news we have :<a href="/news_info" target="_blank" style="color:blue">
+                                    News information</a>
                             </div>
                         </div>
                     </div>
@@ -203,39 +218,31 @@
     </div>
 
     <div class="content-lg container">
-        <div class="row margin-b-30">
-            <div class="col-sm-6">
-                <h2>News for You</h2>
-                <h5>cosine-sim by news title</h5>
-                <h5>-- sklearn cosine_similarity and CountVectorizer</h5>
+        <div class="col-sm-7 sm-margin-b-50">
+            <div class="margin-b-30">
+                <h2>News for You, Model 1</h2>
+                <h4>cosine-sim by news title</h4>
+                <h4>-- sklearn cosine_similarity and CountVectorizer</h4>
                 <canvas id="barChart"></canvas>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 col-sm-offset-1">
         </div>
-        <!--// end row -->
-    </div>
-
-    <div class="content-lg container">
         <div class="col-sm-7 sm-margin-b-50">
             <div class="margin-b-30">
-                <h2>News for You</h2>
-                <h5>tf-idf by news title</h5>
-                <h5>-- sklearn TfidfVectorizer, linear_kernel</h5>
+                <h2>News for You, Model 2</h2>
+                <h4>tf-idf by news title</h4>
+                <h4>-- sklearn TfidfVectorizer, linear_kernel</h4>
                 <canvas id="barChart2"></canvas>
             </div>
-            <div class="col-sm-4 col-sm-offset-1">
-            </div>
         </div>
-        <!--// end row -->
-    </div>
-
-    <div class="content-lg container">
+        <div class="col-sm-4 col-sm-offset-1">
+        </div>
         <div class="col-sm-7 sm-margin-b-50">
             <div class="margin-b-30">
-                <h2>News for You</h2>
-                <h5>tf-idf by user keywords</h5>
-                <h5>-- gensim TfidfModel, MatrixSimilarity</h5>
+                <h2>News for You, Model 3</h2>
+                <h4>tf-idf by user keywords</h4>
+                <h4>-- gensim TfidfModel, MatrixSimilarity</h4>
                 <canvas id="barChart3"></canvas>
             </div>
             <div class="col-sm-4 col-sm-offset-1">
@@ -243,6 +250,7 @@
         </div>
         <!--// end row -->
     </div>
+
     <!-- Back To Top -->
     <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
 
