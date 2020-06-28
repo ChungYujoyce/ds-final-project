@@ -1,4 +1,4 @@
-from __main__ import app
+from main import app
 from flask import Flask,request,render_template,redirect,url_for
 import nltk
 import json
