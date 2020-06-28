@@ -6,14 +6,13 @@ from news_word_cloud import process_cloud
 from news_rec_by_keywords import news_recommend_keywords
 #import requests
 from news_rec_by_title import news_recommendation, cosine_recommender
-app = Flask(__name__)
-import main_cloud
 import pickle
 import nltk
 import json
 from average_tweets import average_tweets
 nltk.download('averaged_perceptron_tagger')
 
+app = Flask(__name__)
 
 stop_words = ['President','Trump','Donald','and','want','need','they','This']
 global stage
