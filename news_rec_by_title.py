@@ -38,6 +38,7 @@ def news_recommendation(item_id, num= 10):
     titles = []
     scores = []
     for rec in recs:
+        #print(rec)
         #print("Recommended: " + item(rec[1], ds) + " (score:" + str(rec[0]) + ")")
         #print(item(rec[1], ds))
         titles.append(item(rec[1], ds))

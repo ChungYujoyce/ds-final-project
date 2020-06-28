@@ -190,7 +190,7 @@ function drawBarChart(score, title, score2, title2, score3, title3) {
                         "rgba(205, 206, 86, 0.2)",
                         "rgba(70, 192, 142, 0.2)",
                         "rgba(11, 211, 248, 0.2)",
-                        "rgba(248, 11 189, 0.2)"
+                        "rgba(248, 11, 189, 0.2)"
                     ],
                     borderColor: [
                         "rgba(114, 248, 11, 1)",
@@ -202,7 +202,7 @@ function drawBarChart(score, title, score2, title2, score3, title3) {
                         "rgba(205, 206, 86, 1)",
                         "rgba(70, 192, 142, 1)",
                         "rgba(11, 211, 248, 1)",
-                        "rgba(248, 11 189, 1)"
+                        "rgba(248, 11, 189, 1)"
                     ],
                     borderWidth: 1
                 }

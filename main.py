@@ -7,17 +7,9 @@ from news_rec_by_keywords import news_recommend_keywords
 #import requests
 from news_rec_by_title import news_recommendation, cosine_recommender
 app = Flask(__name__)
-
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    return render_template('index.html')
-
-@app.route('/about')
-def about():
- 	return render_template('about.html')
-@app.route('/classification')
-def work():
-    return render_template('classification.html')
+import main_cloud
+import main_political
+import pickle
 
 query = ""
 title = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange", "Blue", "Yellow", "Green", "Purple"]
@@ -30,6 +22,19 @@ fig_name = "cloud_result/wordCloud.png"
 count = 0
 model_type = 'Model 1'
 model = 0
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    return render_template('index.html')
+
+@app.route('/classification')
+def work():
+    return render_template('classification.html')
+
+@app.route('/news_info')
+def info():
+    return render_template('news_info.html')
+
 @app.route('/loading', methods=['GET','POST'])
 def load():
     if request.method == 'POST':
@@ -75,10 +80,6 @@ def recommend():
     score2=score2, title2=title2, score3=score3, title3=title3,\
     data= [{'name':'Model 1'}, {'name':'Model 2'}, {'name':'Model 3'}])
 
-@app.route('/features')
-def products():
- 	return render_template('features.html')
-
 @app.route('/word_cloud', methods=['GET','POST'])
 def word_cloud(): 
     if request.method == 'POST':
@@ -95,36 +96,6 @@ def word_cloud():
         return render_template('rec.html', fig_name = str(fig_name), score=score, title=title,\
     score2=score2, title2=title2, score3=score3, title3=title3, \
     data= [{'name':'Model 1'}, {'name':'Model 2'}, {'name':'Model 3'}])
-'''
-@app.route('/sentiment', methods=['GET','POST'])
-def sentiment():
-    if request.method == 'POST':
-        userinput = request.form.get('result')
-        abc = requests.post('http://text-processing.com/api/sentiment/', data={"text": str(userinput)})
-        obj = abc.json()
-        if obj["label"] == "pos":
-            backimg = "static/img/pos.jpg"
-            font = "font-family: 'Princess Sofia', cursive;"
-        elif obj["label"] == "neg":
-            backimg = "static/img/sad.jpg"
-            font = "font-family: 'Special Elite', cursive;"
-        else:
-            backimg = "static/img/neutral.jpg"
-            font = "font-family: 'Balthazar', serif;"
-
-
-        #obj = json.loads(str(abc.text)) ERROR
-        # print(dump(abc))
-        return render_template('result.html', A= str(userinput), B1=str(obj["probability"]["pos"]),B2=str(obj["probability"]["neutral"]),B3=str(obj["probability"]["neg"]),B4=str(obj["label"]), backimg = backimg, font=font)
-        
-    return render_template('sentiment.html')
-
-'''
-
-@app.route('/news_info')
-def info():
-    return render_template('news_info.html')
-
 
 if __name__ == '__main__':
     app.debug = True
