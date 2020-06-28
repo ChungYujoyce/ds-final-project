@@ -20,12 +20,45 @@
     <!-- PAGE LEVEL PLUGIN STYLES -->
     <link href="{{ url_for('static',filename='css/animate.css') }}" rel="stylesheet">
     <link href="{{ url_for('static',filename='vendor/swiper/css/swiper.min.css') }}" rel="stylesheet" type="text/css" />
-
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/myadd.css') }}">
     <!-- THEME STYLES -->
     <link href="{{ url_for('static',filename='css/layout.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!-- Favicon -->
     <link href="{{ url_for('static',filename='img/icon.png') }}" rel="icon">
+    <style>
+        @import url(https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css);
+
+        /*字體*/
+        html,
+        body,
+        div,
+        dl,
+        dt,
+        dd,
+        ul,
+        ol,
+        li,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        pre,
+        form,
+        label,
+        fieldset,
+        input,
+        p,
+        span,
+        a,
+        blockquote,
+        th,
+        td {
+            font-family: 'cwTeXFangSong', serif !important;
+        }
+    </style>
 </head>
 <!-- END HEAD -->
 
@@ -49,15 +82,19 @@
                 <div class="collapse navbar-collapse nav-collapse">
                     <div class="menu-container">
                         <ul class="navbar-nav navbar-nav-right">
-                            <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="/">Home</a></li>
-                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/about">About</a>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/">About</a></li>
+                            <!--li class="nav-item"><a class="nav-item-child nav-item-hover" href="/about">About</a-->
                             </li>
-                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/features">Features</a>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/twitter">Twitter data
+                                    analysis</a>
                             </li>
-                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/classification">
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/political">Political
+                                    analysis</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover active" href="/classification">
                                     Classification</a></li>
                             <li class="nav-item"><a class="nav-item-child nav-item-hover" href="/news_recommend">News
-                                    Rec</a></li>
+                                    Recommendation</a></li>
                         </ul>
                     </div>
                 </div>
@@ -73,25 +110,25 @@
         data-image-src="{{ url_for('static',filename='img/1920x1080/04.jpg') }}">
         <div class="parallax-content container">
             <h1 class="carousel-title">News Classification</h1>
-            <p>We are students from NTHU CS, this is our final project.</p>
         </div>
     </div>
     <!--========== PARALLAX ==========-->
+    
+    
     <div class="content-lg container">
         <div class="row">
+            <div class="col-sm-9">
+                <h3>
+                    由於川普總統常被人戲稱是以twitter治國，
+                    因此我們好奇當川普在面臨各式各樣的事件甚至是危機時，他發表的tweets所包含的情緒是否會與其有所相關呢 ?
+                </h3>
+            </div>
             <!-- Contact List -->
             <div class="col-sm-4 sm-margin-b-50">
                 <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
-                    <h3><a href="#">Data collection</a> <span class="text-uppercase margin-l-20">Head Office</span>
-                    </h3>
-                    <p>We use data from AllSides.com, it's a website which sort news by left, center and right.
-                        It's quite convenient for us to get "labeled" training data.</p>
-                    <ul class="list-unstyled contact-list">
-                        <li><i class="iconify" data-icon="mdi-light:cloud-download" data-inline="false"></i>Get data by
-                            using Web Scraper.</li>
-                        <li><i class="iconify" data-icon="mdi-light:content-cut" data-inline="false"></i>Remove too long
-                            or too short articles.</li>
-                    </ul>
+                    <h3>Data collection</h3>
+                    <p style="color: black">為了要能夠去分析川普總統的tweets，我們經由著名的資料集<a href="http://help.sentiment140.com/for-students">sentiment140</a> ，來訓練我們用於語義分析的模型，這個資料集包含了大量的tweets且已經標註好該tweet所具有的情緒。</p>
+                    
                 </div>
             </div>
             <!-- End Contact List -->
@@ -99,14 +136,10 @@
             <!-- Contact List -->
             <div class="col-sm-4 sm-margin-b-50">
                 <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
-                    <h3><a href="#">Data Preprocessing</a> <span class="text-uppercase margin-l-20">Operation</span>
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor
-                        magna ut consequat siad esqudiat dolor</p>
-                    <ul class="list-unstyled contact-list">
-                        <li><i class="margin-r-10 color-base icon-call-out"></i> 44 77 3456 7890</li>
-                        <li><i class="margin-r-10 color-base icon-envelope"></i> operation@acidus.com</li>
-                    </ul>
+                    <h3>Data Preprocessing</h3>
+                    <p style="color: black">由於資料集中的tweets的內容包含了一些連結以及郵件地址這些我們認為與情緒較無相關的資訊，因此在資料預處理的部分，
+                        我們將上述的那些從資料中移除外，也將停用字(stop words)一併移除。</p>
+                    
                 </div>
             </div>
             <!-- End Contact List -->
@@ -114,19 +147,176 @@
             <!-- Contact List -->
             <div class="col-sm-4 sm-margin-b-50">
                 <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
-                    <h3><a href="#">Model Training</a> <span class="text-uppercase margin-l-20">Finance</span></h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor
-                        magna ut consequat siad esqudiat dolor</p>
-                    <ul class="list-unstyled contact-list">
-                        <li><i class="margin-r-10 color-base icon-call-out"></i> 50 012 456 7890</li>
-                        <li><i class="margin-r-10 color-base icon-envelope"></i> finance@acidus.com</li>
-                    </ul>
+                    <h3>Model Training</h3>
+                    <p style="color: black">接著將藉由Word2Vec將資料集中的字詞進行向量化，並藉此來挖掘他們之間的關係，此步驟是用來作為embedding layer的起始權重。
+並利用Tokenizer將所有tweets所用的字詞整理成一個字典，接著建立一個二維陣列embedding matrix，
+其中第i列表示在字典中索引為i的字詞在Word2Vec的向量表示式，如此一來我們就能透過將各個tweets內容中的字詞轉換成此字典的索引讓訓練模型來處理這些文字內容，進而去預測這些文字內容帶有的情緒。</p>
+                    
                 </div>
             </div>
             <!-- End Contact List -->
         </div>
         <!--// end row -->
+        <br>
+        <div class="row">
+            <img class="img-responsive" src="{{ url_for('static',filename='img/pie/process.JPG') }}" alt="Our Office">
+            <div class="col-xs-12 col-sm-6 col-md-8 sm-margin-b-50">
+                <br>
+            <p style="color: black">訓練完模型後，接下來我們要驗證模型的準確度。</p>
+            <p style="color: black">在文字的情緒分析這一塊，Microsoft Azure也有提供付費API，收費大概是每1000新台幣90元。考量到Microsoft Azure在相關的雲端服務是龍頭之一，而且他是付費API，當作我們的對手應該也有一定的公信力。</p>
+            <p style="color: black">由於Microsoft Azure每個月有五千筆的免費額度，我們從測試集中隨機抽取了五千筆推特貼文，分別餵給自己訓練出來的LSTM模型以及Microsoft Azure的付費API，結果我們的模型準確度為79%，Microsoft Azure的付費API只有69%，吊打了10%的準確度。</p>
+            
+            </div>
+            
+            <div class="col-8 col-sm-6">
+                <br>
+                <p>下圖為 TEXTBLOB的結果</p>
+                <img class="img-responsive" src="{{ url_for('static',filename='img/pie/textblob.PNG') }}" alt="Our Office">
+            </div>
+            <div class="col-8 col-sm-6">
+                <br>
+                <p>下圖為我們訓練出的 LSTM MODEL的結果</p>
+                <img class="img-responsive" src="{{ url_for('static',filename='img/pie/LSTM1.PNG') }}" alt="Our Office">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-8 sm-margin-b-50">
+                <br><br>
+                <h4 style="color: black"><i>我們不敢說自己的模型全方面勝過了Microsoft Azure的付費API，因為我們的模型是針對推特貼文訓練出來的，所以Microsoft Azure的付費API說不定在其他領域，例如像是報導文章上的表現是勝過我們模型的，不過我們的應用範圍是針對川普的推特貼文，而在這個領域是我們的模型擁有優勢。</i></h4>
+            </div>
+        </div>
     </div>
+    <div class="content-lg container">
+        <div class="row">
+
+            <div class="col-sm-9">
+                <h3>
+                    接著考量到川普經常發表爭議性的言論，毀譽參半，有不少報導在描述他的事蹟時經常代入主觀意識，導致立場有所偏頗，
+                    所以我們希望能找到方法來分類一篇報道的立場是左派、右派或者中立。
+                </h3>
+            </div>
+
+            <div class="col-xs-6 col-md-4 sm-margin-b-50">
+                <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
+                    <a style="color: blueviolet"
+                        href="https://pdfs.semanticscholar.org/8445/2eb068bdfe7d5809734a5da8f5c7d10bebfa.pdf?fbclid=IwAR1ga8rtRZ7IkydNQNsoSiPzwunm-H05thZaYyBGp38vmJLsC8F2pTTx-Lw">Political
+                        News Bias Detection using Machine Learning</a>
+                    <img class="img-responsive" src="{{ url_for('static',filename='img/news.PNG') }}" alt="Our Office">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-8 sm-margin-b-50">
+                <div class="wow fadeInRight" data-wow-duration=".3" data-wow-delay=".3s">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Negative</th>
+                            <th>Neutral</th>
+                            <th>Positive</th>
+                        </tr>
+                        <tr>
+                            <td>US News</td>
+                            <td>0.472910</td>
+                            <td>0.409030</td>
+                            <td>0.118060</td>
+                        </tr>
+                        <tr>
+                            <td>Wall Street</td>
+                            <td>0.598152</td>
+                            <td>0.369515</td>
+                            <td>0.032333</td>
+                        </tr>
+                        <tr>
+                            <td>Washington Post</td>
+                            <td>0.611682</td>
+                            <td>0.335047</td>
+                            <td>0.053271</td>
+                        </tr>
+                        <tr>
+                            <td>Fox News</td>
+                            <td>0.514783</td>
+                            <td>0.406957</td>
+                            <td>0.078261</td>
+                        </tr>
+                        <tr>
+                            <td>Washington Time</td>
+                            <td>0.499528</td>
+                            <td>0.410528</td>
+                            <td>0.089946</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <p style="color: black">左圖是我們找到的一篇paper，使用 Chrome extension的新聞分類結果，可以看到幾乎所有的新聞都是中立的情緒，而他們所提出的解釋是:
+
+                    </p>
+                    <p style="color: darkcyan">這些意外結果可歸因於幾個原因。
+                        首先，新聞網站可能在報導時使用結構更中性的句子（儘管整個文章仍然有偏見），
+                        句子級和單詞級分類器都無法識別。
+                        其次，分類器未捕獲到隱喻和否定短語的使用。例如，諸如“以下
+                        陳述被證明是錯誤的”可以還原所有含義
+                        其背後的陳述。最後，MLP分類器沒有採用
+                        考慮不同單詞和短語之間的關係，
+                        導致新聞分類結果不正確</p>
+                    <br>
+                    <p style="color: black">上圖是我們用自己訓練的LSTM跑sentiment analysis的結果，
+                        可以看到，大分的新聞都是負面情緒的，這讓我們也很意外，我們推測的可能原因是:
+                     新聞可能採取較負面的態度，較能夠吸引別人的目光，或者，新聞本身這個載體，採取的寫法就是比tweets用字來得更具批判性(tweets比較輕鬆、隨意)。
+                    又或者，是因為我們專門訓練tweets，導致在新聞的使用上會出現偏誤。</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-lg container">
+        <div class="row">
+           <!-- Contact List -->
+            <div class="col-sm-4 sm-margin-b-50">
+                <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
+                    <h3>Data collection</h3>
+                    <p style="color: black">
+                    首先收集資料的部分是從一個叫做<a href="https://www.allsides.com/unbiased-balanced-news">Allsides</a>的網站使用爬蟲爬取報導以及立場標籤，該網站沒有反爬蟲機制，爬取資料的過程還算順利。雖然Allsides已經有提供報導的立場標籤了，不過我們希望能夠及時提供一篇報導的立場分類，所以想要自己訓練模型。
+                    </p>
+                    
+                </div>
+            </div>
+            <!-- End Contact List -->
+
+            <!-- Contact List -->
+            <div class="col-sm-4 sm-margin-b-50">
+                <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
+                    <h3>Data Preprocessing</h3>
+                    <p style="color: black"></p>
+                    我們做了Lemmatization, remove stopwords, tokenize等等常規文字預處理步驟。
+                </div>
+            </div>
+            <!-- End Contact List -->
+
+            <!-- Contact List -->
+            <div class="col-sm-4 sm-margin-b-50">
+                <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
+                    <h3>Model Training</h3>
+                    <p style="color: black">
+                        我們只針對Allsides報導標題而不包含完整內文，來作為LSTM模型的訓練資料，最後分類結果準確率為39%，
+                        略高於隨機猜測的33%。會有這樣的結果，我們推測一方面是因為報導標題資訊量太少，另一方面則是不管內文如何偏頗，媒體人的素養至少還是會讓他們偏向取一個中立的標題
+                        (應該說是情緒中立而非立場中立)。
+                    </p>
+                    
+                </div>
+            </div>
+            <!-- End Contact List -->
+        </div>
+        <!--// end row -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-8 sm-margin-b-50">
+                <br><br>
+                <h4 style="color: black"><i>在新聞立場分類這部分，我們的結果不甚理想，而我們認為理由如下:
+                    立場這種東西較為模糊，前後文決定了形容詞對於名詞的影響，有時候甚至是諷刺的意思，故雖然整篇文章是負面情緒，
+                    但卻無法跟立場產生太多關聯。
+                </i></h4>
+            </div>
+        </div>
+    </div>
+
     <!-- Testimonials -->
     <div class="content-lg container">
         <div class="row">
@@ -179,16 +369,10 @@
                         </div>
                     </div>
                     <!-- End Swiper Wrapper -->
-
-                    <!-- Pagination -->
-                    <div class="swiper-testimonials-pagination"></div>
                 </div>
                 <!-- End Swiper Testimonials -->
             </div>
-            <div class="col-sm-4 col-sm-offset-1">
-                <img class="img-responsive" src="{{ url_for('static',filename='img/640x380/01.jpg') }}"
-                    alt="Our Office">
-            </div>
+            
         </div>
         <!--// end row -->
     </div>
