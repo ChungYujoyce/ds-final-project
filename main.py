@@ -72,7 +72,7 @@ def home_page():
             for i in range(2009, 2021):
                 if year==i:
                     data_file = "static/fc_data/fc_condensed_" + str(year) + ".json"
-                    legend = str(year) + ' Favorite Count'
+                    fc_legend = str(year) + ' Favorite Count'
         with open(data_file) as json_file:
             fc_json = json.load(json_file)
             for fc in fc_json[:]:
@@ -87,7 +87,7 @@ def home_page():
             for i in range(2009, 2021):
                 if year==i:
                     data_file = "static/rc_data/rc_condensed_" + str(year) + ".json"
-                    legend = str(year) + ' Retweet Count'
+                    rc_legend = str(year) + ' Retweet Count'
         with open(data_file) as json_file:
             rc_json = json.load(json_file)
             for rc in rc_json[:]:
