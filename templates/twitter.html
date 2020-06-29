@@ -31,32 +31,10 @@
         @import url(https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css);
 
         /*字體*/
-        html,
-        body,
-        div,
-        dl,
-        dt,
-        dd,
-        ul,
-        ol,
-        li,
         h1,
         h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        pre,
-        form,
-        label,
-        fieldset,
-        input,
-        p,
-        span,
-        a,
-        blockquote,
-        th,
-        td {
+        h3
+        {
             font-family: 'cwTeXFangSong', serif !important;
         }
     </style>
@@ -111,7 +89,7 @@
         data-image-src="{{ url_for('static',filename='img/twitter.png') }}">
         <div class="parallax-content container">
             <h1 class="carousel-title">Twitter data analysis</h1>
-            <h4 style="color: aquamarine;">我們整理了川普從2009到2020五月的twitter發文 (共 48457 則) <br /> 並對其做常用詞彙分析和情緒分析</h4>
+            <h4 style="color: rgb(200, 200, 200);">我們整理了川普從2009到2020五月的twitter發文 (共 48457 則) <br /> 並對其做常用詞彙分析和情緒分析</h4>
         </div>
     </div>
     <!--========== PARALLAX ==========-->
@@ -146,6 +124,7 @@
         </div>
         <!--// end row -->
         <div class="col-sm-12">
+            <br><br><br><br><br>
             <h3>情感分析的資料是怎麼生成的</h3>
             <p style='color: rgb(70, 70, 70);'>我們將搜集的twitter文用2015年論文
                 <a
@@ -170,6 +149,7 @@
 
             </p>
             <div class="row margin-b-50"></div>
+            <br><br><br><br><br>
             <h3>小結</h3>
             <p style='color: rgb(70, 70, 70);'>透過情感分析，我們從2009到2020可以觀察到川普平均VADER分數逐漸下滑，而按讚和回覆次數則是在選舉期間大漲並持續上升。
                 2019年1月達到巔峰。當時是美國聯邦政府停擺事件，源於國會未能打破川普推行的美墨邊境牆的57億美元預算僵局。3月開始人氣下降，而在年末爆發疫情達到谷底。
@@ -184,6 +164,7 @@
         <!--// end row -->
         <div class="row margin-b-50"></div>
         <div class="col-sm-12">
+            <br><br><br><br><br>
             <h2>常用字彙文字雲</h2>
             <select id="years" name="year" onchange="location = this.value;">
                 <option value="/twitter">Choose year</option>
@@ -222,6 +203,7 @@
         </div>
         <!--// end row -->
         <div class="col-sm-12">
+            <br><br><br><br><br>
             <h3>文字雲如何生成及結論</h3>
             <p style="color: rgb(70, 70, 70);">我們將川普所有貼文字彙提取，並去除連結和hashtag，還有<a href="https://www.nltk.org/">自然語言處理
                     NTLK</a>
@@ -232,6 +214,7 @@
                 Obama : 1845次， Fake : 797次， China : 877次 等等...<br>
                 但我們認為用文字雲效果不佳，需要大量人工處理，搜集時間也過長不好顯示差異。如果針對類型整理可能效果比較好。
             </p>
+            <br><br><br><br><br>
         </div>
         <!--// end row -->
 
@@ -266,89 +249,86 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script type="text/javascript" src="../static/js/script.js"></script>
     <script type="text/javascript">
-        // Global parameters:
+		// Global parameters:
         Chart.defaults.global.responsive = true;
-
+ 
         // define the chart data
-        var chartData = { labels: [{% for item in labels %}"{{item}}", {% endfor %}],
-        datasets:
-        [
-            {
-                label: '{{ legend }}',
-                fill: true,
-                lineTension: 0.1,
-                backgroundColor: "rgba(75,192,192,0.4)",
-                borderColor: "rgba(75,192,192,1)",
-                borderCapStyle: 'butt',
-                borderDash: [],
-                borderDashOffset: 0.0,
-                borderJoinStyle: 'miter',
-                pointBorderColor: "rgba(75,192,192,1)",
-                pointBackgroundColor: "#fff",
-                pointBorderWidth: 1,
-                pointHoverRadius: 5,
-                pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                pointHoverBorderColor: "rgba(220,220,220,1)",
-                pointHoverBorderWidth: 2,
-                pointRadius: 1,
-                pointHitRadius: 10,
-                data: [{% for item in values %}{{ item }}, {% endfor %}],
-            spanGaps: false},
+        var chartData = {labels : [{% for item in labels %}"{{item}}",{% endfor %}],
+                        datasets : 
+                        [
+                            {label: '{{ legend }}',
+                            fill: true,
+                            lineTension: 0.1,
+                            backgroundColor: "rgba(75,192,192,0.4)",
+                            borderColor: "rgba(75,192,192,1)",
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.0,
+                            borderJoinStyle: 'miter',
+                            pointBorderColor: "rgba(75,192,192,1)",
+                            pointBackgroundColor: "#fff",
+                            pointBorderWidth: 1,
+                            pointHoverRadius: 5,
+                            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                            pointHoverBorderColor: "rgba(220,220,220,1)",
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 1,
+                            pointHitRadius: 10,
+                            data : [{% for item in values %}{{item}},{% endfor %}],
+                            spanGaps: false},
 
-        {
-            label: '{{ fc_legend }}',
-                fill: false,
-                    lineTension: 0.05,
-                        backgroundColor: "rgba(255,0,0,0.4)",
+                            {label: '{{ fc_legend }}',
+                            fill: false,
+                            lineTension: 0.05,
+                            backgroundColor: "rgba(255,0,0,0.4)",
                             borderColor: "rgba(255,0,0,0.7)",
-                                borderCapStyle: 'butt',
-                                    borderDash: [],
-                                        borderDashOffset: 0.0,
-                                            borderJoinStyle: 'miter',
-                                                pointBorderColor: "rgba(255,0,0,0.7)",
-                                                    pointBackgroundColor: "#fff",
-                                                        pointBorderWidth: 1,
-                                                            pointHoverRadius: 5,
-                                                                pointHoverBackgroundColor: "rgba(255,0,0,0.7)",
-                                                                    pointHoverBorderColor: "rgba(255,0,0,0.7)",
-                                                                        pointHoverBorderWidth: 2,
-                                                                            pointRadius: 1,
-                                                                                pointHitRadius: 10,
-                                                                                    data : [{% for item in fc_values %} { { item } }, {% endfor %}],
-        spanGaps: false},
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.0,
+                            borderJoinStyle: 'miter',
+                            pointBorderColor: "rgba(255,0,0,0.7)",
+                            pointBackgroundColor: "#fff",
+                            pointBorderWidth: 1,
+                            pointHoverRadius: 5,
+                            pointHoverBackgroundColor: "rgba(255,0,0,0.7)",
+                            pointHoverBorderColor: "rgba(255,0,0,0.7)",
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 1,
+                            pointHitRadius: 10,
+                            data : [{% for item in fc_values %}{{item}},{% endfor %}],
+                            spanGaps: false},
 
-        {
-            label: '{{ rc_legend }}',
-                fill: false,
-                    lineTension: 0.05,
-                        backgroundColor: "rgba(0,128,0,0.4)",
+                            {label: '{{ rc_legend }}',
+                            fill: false,
+                            lineTension: 0.05,
+                            backgroundColor: "rgba(0,128,0,0.4)",
                             borderColor: "rgba(0,128,0,0.7)",
-                                borderCapStyle: 'butt',
-                                    borderDash: [],
-                                        borderDashOffset: 0.0,
-                                            borderJoinStyle: 'miter',
-                                                pointBorderColor: "rgba(0,128,0,0.7)",
-                                                    pointBackgroundColor: "#fff",
-                                                        pointBorderWidth: 1,
-                                                            pointHoverRadius: 5,
-                                                                pointHoverBackgroundColor: "rgba(0,128,0,0.7)",
-                                                                    pointHoverBorderColor: "rgba(0,128,0,0.7)",
-                                                                        pointHoverBorderWidth: 2,
-                                                                            pointRadius: 1,
-                                                                                pointHitRadius: 10,
-                                                                                    data : [{% for item in rc_values %} { { item } }, {% endfor %}],
-        spanGaps: false}
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.0,
+                            borderJoinStyle: 'miter',
+                            pointBorderColor: "rgba(0,128,0,0.7)",
+                            pointBackgroundColor: "#fff",
+                            pointBorderWidth: 1,
+                            pointHoverRadius: 5,
+                            pointHoverBackgroundColor: "rgba(0,128,0,0.7)",
+                            pointHoverBorderColor: "rgba(0,128,0,0.7)",
+                            pointHoverBorderWidth: 2,
+                            pointRadius: 1,
+                            pointHitRadius: 10,
+                            data : [{% for item in rc_values %}{{item}},{% endfor %}],
+                            spanGaps: false}
                         ]}
-
+  
         // get chart canvas
         var ctx = document.getElementById("myChart").getContext("2d");
-
+  
         // create the chart using the chart canvas
         var myChart = new Chart(ctx, {
             type: 'line',
             data: chartData,
         });
-    </script>
+	</script>
 </body>
 <!-- END BODY -->
 
