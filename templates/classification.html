@@ -193,7 +193,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-8 sm-margin-b-50">
                 <div class="wow fadeInRight" data-wow-duration=".3" data-wow-delay=".3s">
-                    <table>
+                    <!--<table>
                         <tr>
                             <th></th>
                             <th>Negative</th>
@@ -249,147 +249,153 @@
                         新聞可能採取較負面的態度，較能夠吸引別人的目光，或者，新聞本身這個載體，採取的寫法就是比tweets用字來得更具批判性(tweets比較輕鬆、隨意)。
                         又或者，是因為我們專門訓練tweets，導致在新聞的使用上會出現偏誤。</p>
 
+                </div>-->
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="content-lg container">
-        <div class="row">
-            <!-- Contact List -->
-            <div class="col-sm-4 sm-margin-b-50">
-                <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
-                    <h3>Data collection</h3>
-                    <p style="color: black">
-                        首先收集資料的部分是從一個叫做<a
-                            href="https://www.allsides.com/unbiased-balanced-news">Allsides</a>的網站使用爬蟲爬取報導以及立場標籤，該網站沒有反爬蟲機制，爬取資料的過程還算順利。雖然Allsides已經有提供報導的立場標籤了，不過我們希望能夠及時提供一篇報導的立場分類，所以想要自己訓練模型。
-                    </p>
+        <div class="content-lg container">
+            <div class="row">
+                <!-- Contact List -->
+                <div class="col-sm-4 sm-margin-b-50">
+                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
+                        <h3>Data collection</h3>
+                        <p style="color: black">
+                            首先收集資料的部分是從一個叫做<a
+                                href="https://www.allsides.com/unbiased-balanced-news">Allsides</a>的網站使用爬蟲爬取報導以及立場標籤，該網站沒有反爬蟲機制，爬取資料的過程還算順利。雖然Allsides已經有提供報導的立場標籤了，不過我們希望能夠及時提供一篇報導的立場分類，所以想要自己訓練模型。
+                        </p>
 
-                </div>
-            </div>
-            <!-- End Contact List -->
-
-            <!-- Contact List -->
-            <div class="col-sm-4 sm-margin-b-50">
-                <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
-                    <h3>Data Preprocessing</h3>
-                    <p style="color: black">
-                        我們做了Lemmatization, remove stopwords, tokenize等等常規文字預處理步驟。</p>
-                </div>
-            </div>
-            <!-- End Contact List -->
-
-            <!-- Contact List -->
-            <div class="col-sm-4 sm-margin-b-50">
-                <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
-                    <h3>Model Training</h3>
-                    <p style="color: black">
-                        我們只針對Allsides報導標題而不包含完整內文，來作為LSTM模型的訓練資料，最後分類結果準確率為39%，
-                        略高於隨機猜測的33%。會有這樣的結果，我們推測一方面是因為報導標題資訊量太少，另一方面則是不管內文如何偏頗，媒體人的素養至少還是會讓他們偏向取一個中立的標題
-                        (應該說是情緒中立而非立場中立)。
-                    </p>
-
-                </div>
-            </div>
-            <!-- End Contact List -->
-        </div>
-        <!--// end row -->
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-8 sm-margin-b-50">
-                <br><br>
-                <h4 style="color: black"><i>在新聞立場分類這部分，我們的結果不甚理想，而我們認為理由如下:
-                        立場這種東西較為模糊，前後文決定了形容詞對於名詞的影響，有時候甚至是諷刺的意思，故雖然整篇文章是負面情緒，
-                        但卻無法跟立場產生太多關聯。
-                    </i></h4>
-            </div>
-        </div>
-    </div>
-
-    <!-- Testimonials -->
-    <div class="content-lg container">
-        <div class="row">
-            <div class="col-sm-9">
-                <h2>Media Bias</h2>
-                <!-- Swiper Testimonials -->
-                <div class="swiper-slider swiper-testimonials">
-                    <!-- Swiper Wrapper -->
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <blockquote class="blockquote">
-                                <div class="margin-b-20">
-                                    At AllSides, we believe there is no such thing as completely unbiased news. We're
-                                    all biased, making it impossible to
-                                    write or curate perfectly objective news.
-                                </div>
-                                <div class="margin-b-20">
-                                    Therefore, readers should not seek unbiased sources, but should instead consume news
-                                    coverage across the political
-                                    spectrum. In order to accomplish this, we have a list of sources that have been
-                                    assigned media bias ratings using our
-                                    patented bias rating technology.
-
-                                </div>
-                                <p><span class="fweight-700 color-link">AllSides</span>, strengthens our democracy with
-                                    balanced news, diverse perspectives, and real conversation.</p>
-                            </blockquote>
-                        </div>
-                        <div class="swiper-slide">
-                            <blockquote class="blockquote">
-                                <div class="margin-b-20">
-                                    Media organizations currently operate on a business model that seeks to make us
-                                    angry at the "other side" in order to
-                                    cultivate a partisan customer base, contributing to the increasing polarization seen
-                                    in society today. By reading a
-                                    breadth of coverage from Left to Right, readers can more effectively cut through
-                                    partisanship and get a fuller picture
-                                    of current events. What's more, exposure to other perspectives is vital to popping
-                                    filter bubbles, which are the echo
-                                    chambers that form when we only interact with ideas that we agree with.
-                                </div>
-                                <div class="margin-b-20">
-                                    There are several types of media bias, including tonal bias, gatekeeping bias,
-                                    visibility bias, advertising bias,
-                                    corporate bias, and concision bias, among others.
-                                </div>
-                                <p><span class="fweight-700 color-link">AllSides</span>, strengthens our democracy with
-                                    balanced news, diverse perspectives, and real conversation.</p>
-                            </blockquote>
-                        </div>
                     </div>
-                    <!-- End Swiper Wrapper -->
                 </div>
-                <!-- End Swiper Testimonials -->
+                <!-- End Contact List -->
+
+                <!-- Contact List -->
+                <div class="col-sm-4 sm-margin-b-50">
+                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
+                        <h3>Data Preprocessing</h3>
+                        <p style="color: black">
+                            我們做了Lemmatization, remove stopwords, tokenize等等常規文字預處理步驟。</p>
+                    </div>
+                </div>
+                <!-- End Contact List -->
+
+                <!-- Contact List -->
+                <div class="col-sm-4 sm-margin-b-50">
+                    <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
+                        <h3>Model Training</h3>
+                        <p style="color: black">
+                            我們只針對Allsides報導標題而不包含完整內文，來作為LSTM模型的訓練資料，最後分類結果準確率為39%，
+                            略高於隨機猜測的33%。會有這樣的結果，我們推測一方面是因為報導標題資訊量太少，另一方面則是不管內文如何偏頗，媒體人的素養至少還是會讓他們偏向取一個中立的標題
+                            (應該說是情緒中立而非立場中立)。
+                        </p>
+
+                    </div>
+                </div>
+                <!-- End Contact List -->
             </div>
-
+            <!--// end row -->
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-8 sm-margin-b-50">
+                    <br><br>
+                    <h4 style="color: black"><i>在新聞立場分類這部分，我們的結果不甚理想，而我們認為理由如下:
+                            立場這種東西較為模糊，前後文決定了形容詞對於名詞的影響，有時候甚至是諷刺的意思，故雖然整篇文章是負面情緒，
+                            但卻無法跟立場產生太多關聯。
+                        </i></h4>
+                </div>
+            </div>
         </div>
-        <!--// end row -->
-    </div>
-    <!-- End Testimonials -->
 
-    <!--========== END PAGE LAYOUT ==========-->
-    <!-- Back To Top -->
-    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+        <!-- Testimonials -->
+        <div class="content-lg container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <h2>Media Bias</h2>
+                    <!-- Swiper Testimonials -->
+                    <div class="swiper-slider swiper-testimonials">
+                        <!-- Swiper Wrapper -->
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <blockquote class="blockquote">
+                                    <div class="margin-b-20">
+                                        At AllSides, we believe there is no such thing as completely unbiased news.
+                                        We're
+                                        all biased, making it impossible to
+                                        write or curate perfectly objective news.
+                                    </div>
+                                    <div class="margin-b-20">
+                                        Therefore, readers should not seek unbiased sources, but should instead consume
+                                        news
+                                        coverage across the political
+                                        spectrum. In order to accomplish this, we have a list of sources that have been
+                                        assigned media bias ratings using our
+                                        patented bias rating technology.
 
-    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-    <!-- CORE PLUGINS -->
-    <script src="{{ url_for('static',filename='vendor/jquery.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static',filename='vendor/jquery-migrate.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js') }}"
-        type="text/javascript"></script>
+                                    </div>
+                                    <p><span class="fweight-700 color-link">AllSides</span>, strengthens our democracy
+                                        with
+                                        balanced news, diverse perspectives, and real conversation.</p>
+                                </blockquote>
+                            </div>
+                            <div class="swiper-slide">
+                                <blockquote class="blockquote">
+                                    <div class="margin-b-20">
+                                        Media organizations currently operate on a business model that seeks to make us
+                                        angry at the "other side" in order to
+                                        cultivate a partisan customer base, contributing to the increasing polarization
+                                        seen
+                                        in society today. By reading a
+                                        breadth of coverage from Left to Right, readers can more effectively cut through
+                                        partisanship and get a fuller picture
+                                        of current events. What's more, exposure to other perspectives is vital to
+                                        popping
+                                        filter bubbles, which are the echo
+                                        chambers that form when we only interact with ideas that we agree with.
+                                    </div>
+                                    <div class="margin-b-20">
+                                        There are several types of media bias, including tonal bias, gatekeeping bias,
+                                        visibility bias, advertising bias,
+                                        corporate bias, and concision bias, among others.
+                                    </div>
+                                    <p><span class="fweight-700 color-link">AllSides</span>, strengthens our democracy
+                                        with
+                                        balanced news, diverse perspectives, and real conversation.</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                        <!-- End Swiper Wrapper -->
+                    </div>
+                    <!-- End Swiper Testimonials -->
+                </div>
 
-    <!-- PAGE LEVEL PLUGINS -->
-    <script src="{{ url_for('static',filename='vendor/jquery.easing.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static',filename='vendor/jquery.back-to-top.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static',filename='vendor/jquery.smooth-scroll.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static',filename='vendor/jquery.wow.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static',filename='vendor/jquery.parallax.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static',filename='vendor/swiper/js/swiper.jquery.min.js') }}"
-        type="text/javascript"></script>
+            </div>
+            <!--// end row -->
+        </div>
+        <!-- End Testimonials -->
 
-    <!-- PAGE LEVEL SCRIPTS -->
-    <script src="{{ url_for('static',filename='js/layout.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static',filename='js/components/swiper.min.js') }}" type="text/javascript"></script>
-    <script src="{{ url_for('static',filename='js/components/wow.min.js') }}" type="text/javascript"></script>
+        <!--========== END PAGE LAYOUT ==========-->
+        <!-- Back To Top -->
+        <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+
+        <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+        <!-- CORE PLUGINS -->
+        <script src="{{ url_for('static',filename='vendor/jquery.min.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='vendor/jquery-migrate.min.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js') }}"
+            type="text/javascript"></script>
+
+        <!-- PAGE LEVEL PLUGINS -->
+        <script src="{{ url_for('static',filename='vendor/jquery.easing.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='vendor/jquery.back-to-top.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='vendor/jquery.smooth-scroll.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='vendor/jquery.wow.min.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='vendor/jquery.parallax.min.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='vendor/swiper/js/swiper.jquery.min.js') }}"
+            type="text/javascript"></script>
+
+        <!-- PAGE LEVEL SCRIPTS -->
+        <script src="{{ url_for('static',filename='js/layout.min.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='js/components/swiper.min.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static',filename='js/components/wow.min.js') }}" type="text/javascript"></script>
 
 </body>
 <!-- END BODY -->
